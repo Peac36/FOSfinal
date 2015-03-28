@@ -3,12 +3,178 @@
 	padding: 0px;
 	border: 0px;
 }
+.clear{
+	clear:both;
+}
 
 body{
-	background-color:grey;
+	background-color:rgb(143,147,159);
+	background-size:cover;
 }
 .mainwrapper{
-	background-color: black;
-	width:90%;
+	
+	width:1024px;
 	margin:0px auto;
 }
+/* nav */
+nav{
+	height:39px;
+}
+
+
+nav{
+	background:url('../images/simpleheader.png');
+	background-repeat:repeat-y;
+	width:100%;
+	
+}
+nav>ul>li{
+	list-style: none;
+	float:left;
+	padding:10px;
+}
+/* end of nav */
+.bodyholder{
+	background-repeat:no-repeat;
+	background:url('../images/mainbody.png');
+	height:363px;
+	position: relative;
+}
+footer{
+	margin-left:10px;
+	background:url('../images/footer.gif');
+
+	height:72px;
+}
+/* fixing text position in top part*/
+#loren{
+	font-size:14px;
+	width:330px;
+	position: absolute;
+	text-align:left;
+	color:grey;
+	right:33px;
+	bottom:60px;
+}
+#loren>span{
+	margin-top:10px;
+	color: white;
+}
+#loren>p{
+	margin-bottom:5px;
+}
+/*end of fixind  */
+/*start of middle part*/
+.middle{
+	
+	background-color: rgb(141,145,157);
+}
+
+/* start of left part of middle */
+.leftcol{
+	width:633px;
+	float:left;
+}
+
+.holder{
+	1background-color: rgb(179,182,191);
+	width:594px;
+	
+	margin:50px auto;
+}
+.theader{
+background:url('../images/post-top.gif');
+height:39px;
+margin:0px auto;
+}
+
+.theader>div{
+
+	width: 90%;
+	margin:0px auto;
+	
+	border-bottom:1px dashed yellow;
+}
+.tbody{
+	margin-left:3px;
+	width:588px;
+	background-color: rgb(179,182,191);
+
+}
+#result {
+	width:594px;
+}
+#result  th,#result  td{
+	width:20%;
+}
+#result  td{
+	text-align: center;
+}
+.tfooter{
+	content: '';
+	background:url('../images/post-bottom.gif');
+	width:594px;
+	height:39px;
+}
+/* end of left part of middle */
+
+/* start of right part of middle */
+.rightcol{
+
+	width:388px;
+	float:right;
+}
+.rightbody{
+	background-color: rgb(54,58,67);
+	width:95%;
+
+}
+.row{
+	margin-bottom:20px;
+}
+
+.row>div:nth-child(1){
+	margin-left:10px;
+	float:left;
+}
+.row>div:nth-child(2){
+	margin-right:10px;
+	float:right;
+}
+
+
+.cell>div{
+	color:white;
+	width:160px;
+	height: 39px;
+	text-align: center;
+	vertical-align: baseline;
+	background:url('../images/topbar.gif');
+	margin-bottom:5px;
+}
+.cell>select{
+	margin:0px auto;
+	width:150px;
+}
+#search{
+	color:white;
+	width:160px;
+	height: 39px;
+	background:url('../images/topbar.gif');
+}
+
+/* end of right part of middle */
+/* start of footer */
+footer{
+	position: relative;
+}
+footer>span{
+	position: absolute;
+	bottom:0px;
+	bottom:5px;
+	left:5px;
+	color:white;
+	font-style: italic;
+	font-size:11px;
+}
+/* end of footer */
