@@ -1,3 +1,16 @@
+<?php
+require_once 'mysql/connect.php';
+$q = mysqli_query($conn, 'SELECT DISTINCT `brand`,`model`,`reg_num`,`horse_power`,`color` FROM `cars`') or die(mysql_error($conn));
+while ($result = mysqli_fetch_assoc($q)) {
+	$data['brand'][] = $result['brand'];
+	$data['model'][] = $result['model'];
+	$data['reg_num'][] = $result['reg_num'];
+	$data['horse_power'][] = $result['horse_power'];
+	$data['color'][] = $result['color'];
+	$sorted[] = $result;
+}
+
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -49,20 +62,18 @@
 									<th>Power</th>
 									<th>Color</th>
 								</tr>
-								<tr>
-									<td>1</td>
-									<td>2</td>
-									<td>3</td>
-									<td>4</td>
-									<td>5</td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>2</td>
-									<td>3</td>
-									<td>4</td>
-									<td>5</td>
-								</tr>
+								<?php
+foreach ($sorted as $v) {
+
+	echo '<tr>';
+	echo "<td>" . $v['brand'] . "</td>";
+	echo "<td>" . $v['model'] . "</td>";
+	echo "<td>" . $v['reg_num'] . "</td>";
+	echo "<td>" . $v['horse_power'] . "</td>";
+	echo "<td>" . $v['color'] . "</td>";
+	echo '</tr>';
+}
+?>
 							</table>
 						</div>
 						<div class='tfooter'></div>
@@ -79,15 +90,27 @@
 
 									<div class='cell'>
 									<div><p>Make</p></div>
-									<select>
-										<option value='1'>1</option>
+									<select  multiple>
+
+										<?php
+foreach (array_unique($data['brand']) as $v) {
+	echo "<option value=\"$v\" >$v</option>";
+}
+
+?>
 									</select>
 									</div>
 
 									<div class='cell'>
 									<div><p>Model</p></div>
-									<select>
-										<option value='1'>1</option>
+									<select multiple>
+
+																				<?php
+foreach (array_unique($data['model']) as $v) {
+	echo "<option value=\"$v\" >$v</option>";
+}
+
+?>
 									</select>
 									</div>
 									<div class='clear'></div>
@@ -99,15 +122,27 @@
 
 									<div class='cell'>
 									<div><p>Registration Number</p></div>
-									<select>
-										<option value='1'>1</option>
+									<select multiple>
+
+																				<?php
+foreach (array_unique($data['reg_num']) as $v) {
+	echo "<option value=\"$v\" >$v</option>";
+}
+
+?>
 									</select>
 									</div>
 
 									<div class='cell'>
 									<div><p>Power</p></div>
-									<select>
-										<option value='1'>1</option>
+									<select multiple>
+
+																				<?php
+foreach (array_unique($data['horse_power']) as $v) {
+	echo "<option value=\"$v\" >$v</option>";
+}
+
+?>
 									</select>
 									</div>
 									<div class='clear'></div>
@@ -119,8 +154,14 @@
 
 									<div class='cell'>
 									<div><p>Color</p></div>
-									<select>
-										<option value='1'>1</option>
+									<select multiple>
+
+																				<?php
+foreach (array_unique($data['color']) as $v) {
+	echo "<option value=\"$v\" >$v</option>";
+}
+
+?>
 									</select>
 									</div>
 
