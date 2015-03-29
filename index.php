@@ -2,13 +2,18 @@
 <html>
 <head>
 <link rel='stylesheet' href='css/index.css'>
+<link rel='stylesheet' href='js/jquery-ui-1.11.3.custom/jquery-ui.min.css'>
+<script src='js/jquery-2.1.3.min.js'></script>
+<script src='js/jquery-ui-1.11.3.custom/jquery-ui.min.js'></script>
+<script src='js/calendar.js'></script>
+
 </head>
 <body>
 	<!--start mainwrapper -->
 	<div class='mainwrapper'>
 		<nav>
 			<ul>
-				<li>Home</li>
+				<li class='activeNav'>Home</li>
 				<li>About</li>
 				<li>FAQ</li>
 				<li>Contact</li>
@@ -51,6 +56,13 @@
 									<td>4</td>
 									<td>5</td>
 								</tr>
+								<tr>
+									<td>1</td>
+									<td>2</td>
+									<td>3</td>
+									<td>4</td>
+									<td>5</td>
+								</tr>
 							</table>
 						</div>
 						<div class='tfooter'></div>
@@ -66,14 +78,14 @@
 								<div class='row'>
 
 									<div class='cell'>
-									<div>Make</div>
+									<div><p>Make</p></div>
 									<select>
 										<option value='1'>1</option>
 									</select>
 									</div>
 
 									<div class='cell'>
-									<div>Model</div>
+									<div><p>Model</p></div>
 									<select>
 										<option value='1'>1</option>
 									</select>
@@ -86,14 +98,14 @@
 								<div class='row'>
 
 									<div class='cell'>
-									<div>Registration Number</div>
+									<div><p>Registration Number</p></div>
 									<select>
 										<option value='1'>1</option>
 									</select>
 									</div>
 
 									<div class='cell'>
-									<div>Power</div>
+									<div><p>Power</p></div>
 									<select>
 										<option value='1'>1</option>
 									</select>
@@ -106,16 +118,17 @@
 								<div class='row'>
 
 									<div class='cell'>
-									<div>Color</div>
+									<div><p>Color</p></div>
 									<select>
 										<option value='1'>1</option>
 									</select>
 									</div>
 
 									<div class='cell'>
-									<div>Type</div>
+									<div><p>Type</p></div>
 									<select>
-										<option value='1'>1</option>
+										<option value='rend'>Rended</option>
+										<option value='rend'>Free</option>
 									</select>
 									</div>
 									<div class='clear'></div>
@@ -126,22 +139,21 @@
 								<div class='row'>
 
 									<div class='cell'>
-									<div>From</div>
-									<select>
-										<option value='1'>1</option>
-									</select>
+									<div><p>From</p></div>
+									<input type='text' name='from' id='from' style='width:120px'/>
+									<button  type='button'></button>
 									</div>
 
 									<div class='cell'>
-									<div>To</div>
-									<select>
-										<option value='1'>1</option>
-									</select>
+									<div><p>To</p></div>
+									<input type='text' name='to' id='to' style='width:120px'/>
+									<button type='button'></button>
 									</div>
 									<div class='clear'></div>
 								</div>
 								<!-- end of fourth row -->
 
+								<!-- start of last row -->
 								<div class='row'>
 
 									<div class='cell'>
@@ -153,6 +165,7 @@
 									</div>
 									<div class='clear'></div>
 								</div>
+								<!-- end of last row -->
 
 
 
