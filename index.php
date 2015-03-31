@@ -19,6 +19,7 @@ while ($result = mysqli_fetch_assoc($q)) {
 <script src='js/jquery-2.1.3.min.js'></script>
 <script src='js/jquery-ui-1.11.3.custom/jquery-ui.min.js'></script>
 <script src='js/calendar.js'></script>
+<script src='js/ajax.js'></script>
 
 </head>
 <body>
@@ -90,7 +91,7 @@ foreach ($sorted as $v) {
 
 									<div class='cell'>
 									<div><p>Make</p></div>
-									<select  multiple>
+									<select id='brand' multiple='multiple'>
 
 										<?php
 foreach (array_unique($data['brand']) as $v) {
@@ -103,7 +104,7 @@ foreach (array_unique($data['brand']) as $v) {
 
 									<div class='cell'>
 									<div><p>Model</p></div>
-									<select multiple>
+									<select id='model' multiple>
 
 																				<?php
 foreach (array_unique($data['model']) as $v) {
@@ -122,7 +123,7 @@ foreach (array_unique($data['model']) as $v) {
 
 									<div class='cell'>
 									<div><p>Registration Number</p></div>
-									<select multiple>
+									<select id='reg_num' multiple>
 
 																				<?php
 foreach (array_unique($data['reg_num']) as $v) {
@@ -135,7 +136,7 @@ foreach (array_unique($data['reg_num']) as $v) {
 
 									<div class='cell'>
 									<div><p>Power</p></div>
-									<select multiple>
+									<select id='horse_power' multiple>
 
 																				<?php
 foreach (array_unique($data['horse_power']) as $v) {
@@ -154,7 +155,7 @@ foreach (array_unique($data['horse_power']) as $v) {
 
 									<div class='cell'>
 									<div><p>Color</p></div>
-									<select multiple>
+									<select id='color' multiple>
 
 																				<?php
 foreach (array_unique($data['color']) as $v) {
@@ -167,9 +168,9 @@ foreach (array_unique($data['color']) as $v) {
 
 									<div class='cell'>
 									<div><p>Type</p></div>
-									<select>
+									<select id='type'>
 										<option value='rend'>Rended</option>
-										<option value='rend'>Free</option>
+										<option value='free'>Free</option>
 									</select>
 									</div>
 									<div class='clear'></div>
@@ -182,13 +183,13 @@ foreach (array_unique($data['color']) as $v) {
 									<div class='cell'>
 									<div><p>From</p></div>
 									<input type='text' name='from' id='from' style='width:120px'/>
-									<button  type='button'></button>
+									<button  id='frombutton' type='button'></button>
 									</div>
 
 									<div class='cell'>
 									<div><p>To</p></div>
 									<input type='text' name='to' id='to' style='width:120px'/>
-									<button type='button'></button>
+									<button id='tobutton'  type='button'></button>
 									</div>
 									<div class='clear'></div>
 								</div>

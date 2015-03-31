@@ -86,9 +86,7 @@ footer{
 }
 
 .holder{
-	1background-color: rgb(179,182,191);
 	width:594px;
-	
 	margin:50px auto;
 }
 .theader{
@@ -130,7 +128,7 @@ position: relative;
 	width:20%;
 }
 #result  td{
-	border-left:1px solid black;
+	
 	border-right:1px solid black;
 	border-bottom:1px solid black;
 	text-align: center;
