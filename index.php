@@ -1,6 +1,6 @@
 <?php
 require_once 'mysql/connect.php';
-$q = mysqli_query($conn, 'SELECT DISTINCT `brand`,`model`,`reg_num`,`horse_power`,`color` FROM `cars`') or die(mysql_error($conn));
+$q = mysqli_query($conn, 'SELECT DISTINCT `brand`,`model`,`reg_num`,`horse_power`,`color` FROM `cars` ORDER BY `id` DESC') or die(mysql_error($conn));
 while ($result = mysqli_fetch_assoc($q)) {
 	$data['brand'][] = $result['brand'];
 	$data['model'][] = $result['model'];
@@ -91,7 +91,7 @@ foreach ($sorted as $v) {
 
 									<div class='cell'>
 									<div><p>Make</p></div>
-									<select id='brand' multiple='multiple'>
+									<select id='brand' name='brand[]' multiple='multiple'>
 
 										<?php
 foreach (array_unique($data['brand']) as $v) {
@@ -104,7 +104,7 @@ foreach (array_unique($data['brand']) as $v) {
 
 									<div class='cell'>
 									<div><p>Model</p></div>
-									<select id='model' multiple>
+									<select id='model'  name='model[]' multiple>
 
 																				<?php
 foreach (array_unique($data['model']) as $v) {
@@ -123,7 +123,7 @@ foreach (array_unique($data['model']) as $v) {
 
 									<div class='cell'>
 									<div><p>Registration Number</p></div>
-									<select id='reg_num' multiple>
+									<select id='reg_num' name='reg_num[]' multiple>
 
 																				<?php
 foreach (array_unique($data['reg_num']) as $v) {
@@ -136,7 +136,7 @@ foreach (array_unique($data['reg_num']) as $v) {
 
 									<div class='cell'>
 									<div><p>Power</p></div>
-									<select id='horse_power' multiple>
+									<select id='horse_power' name='horse_power[]' multiple>
 
 																				<?php
 foreach (array_unique($data['horse_power']) as $v) {
@@ -155,7 +155,7 @@ foreach (array_unique($data['horse_power']) as $v) {
 
 									<div class='cell'>
 									<div><p>Color</p></div>
-									<select id='color' multiple>
+									<select id='color' name='color[]' multiple>
 
 																				<?php
 foreach (array_unique($data['color']) as $v) {
@@ -168,7 +168,7 @@ foreach (array_unique($data['color']) as $v) {
 
 									<div class='cell'>
 									<div><p>Type</p></div>
-									<select id='type'>
+									<select id='type' name='type'>
 										<option value='rend'>Rended</option>
 										<option value='free'>Free</option>
 									</select>

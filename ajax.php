@@ -1,35 +1,48 @@
 <?php
+error_reporting(E_ALL ^ E_WARNING);
 //(\d+){4}-(\d){2}-(\d){2}
 require_once 'mysql/connect.php';
 $status = true;
-$query = "select c.*
+$query = "select c.*,cc.*
 	from clients_cars cc
 join cars c on
 	cc.cars_id=c.id  where ";
 // for type of query and date
 if (isset($_POST['to'], $_POST['from']) and preg_match('/(\d+){4}-(\d){2}-(\d){2}/', $_POST['to']) and preg_match('/(\d+){4}-(\d){2}-(\d){2}/', $_POST['from'])) {
-	if (isset($_POST['type']) and $_POST['type'] === 'rend') {
+	if ((strtotime($_POST['to']) - strtotime($_POST['from'])) > 0) {
+		$to = $_POST['to'];
+		$from = $_POST['from'];
+	} elseif ((strtotime($_POST['to']) - strtotime($_POST['from'])) < 0) {
+		$to = $_POST['from'];
+		$from = $_POST['to'];
+
+	} else {
+		$to = $_POST['to'];
+		$from = $_POST['from'];
+	}
+
+	if (isset($_POST['type']) and $_POST['type'] === 'free') {
 		//for taking cars
 		$query = $query . "
-	cc.`rent_date` NOT BETWEEN '" . $_POST['to'] . "' AND '" . $_POST['from'] . "'
-		AND
-	cc.`rent_date`<'" . $_POST['to'] . "'
-	AND
-	cc.`return_date` NOT BETWEEN '" . $_POST['to'] . "' AND '" . $_POST['from'] . "'
-		AND
-	cc.`rent_date`<'" . $_POST['from'] . "'
-	;";
+		( (cc.`rent_date`  NOT BETWEEN '" . $to . "' AND '" . $from . "')
+			AND
+		( cc.`return_date`  NOT BETWEEN '" . $to . "' AND '" . $from . "') )
+			AND
+		cc.`rent_date`>'" . $to . "'
+			OR
+		cc.`return_date`<'" . $from . "'
+
+			";
 	} else {
 		//for free cars
 		$query = $query . "
-	cc.`rent_date`  BETWEEN '" . $_POST['to'] . "' AND '" . $_POST['from'] . "'
-		AND
-	cc.`rent_date`<'" . $_POST['to'] . "'
-	AND
-	cc.`return_date`  BETWEEN '" . $_POST['to'] . "' AND '" . $_POST['from'] . "'
-		AND
-	cc.`rent_date`<'" . $_POST['from'] . "'
-	";
+		( (cc.`rent_date`  BETWEEN '" . $to . "' AND '" . $from . "')
+			AND
+		( cc.`return_date`  BETWEEN '" . $to . "' AND '" . $from . "') )
+			OR
+		(cc.`rent_date`<'" . $to . "'
+			AND
+		`return_date`>'" . $from . "')";
 	}
 	$status = false;
 }

@@ -28,26 +28,27 @@ $(document).ready(function(){
 
 		})
 		var type=$('#type   :selected' ).val();
-		console.log(brand,model,type,reg_num,horse_power,color);
+		//console.log(brand,model,type,reg_num,horse_power,color);
 		
 		$.ajax({
 			url:'ajax.php',
 			method:'POST',
 			data:{'to':to,'from':from,'type':type,'brand':brand,'model':model,'reg_num':reg_num,'horse_power':horse_power,'color':color},
 			success:function(data){
+				if(data){
 				data=JSON.parse(data);
 				$('#result tr:gt(0)').html('');
 				var count=data.length;
 				if(count!=0){
 					for(var i=0;i<count;i++){
-						$('#result').append('<tr><td>'+data[i].brand+'</td><td>'+data[i].model+'</td><td>'+data[i].reg_num+'</td><td>'+data[i].horse_power+'</td><td>'+data[i].color+'</td></tr>').hide().fadeIn()
-						
+						$('#result').append('<tr><td>'+data[i].brand+'</td><td>'+data[i].model+'</td><td>'+data[i].reg_num+'</td><td>'+data[i].horse_power+'</td><td>'+data[i].color+'</td></tr>').hide().delay(1).fadeIn()	
 					}
-					
-				}else{
-					$('#result').append('<tr><td colspan=5>We could\'nt found anything </td></tr>')
 				}
-			}
+			}else{
+					$('#result tr:gt(0)').html('');
+					$('#result').append('<tr><td colspan=5>We could\'nt find anything </td></tr>')
+				}
+		}
 		})
 	})
 

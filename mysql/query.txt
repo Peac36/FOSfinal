@@ -45,11 +45,16 @@ SELECT c.*,cc.* FROM `clients_cars` cc
 JOIN `cars` c ON cc.cars_id=c.id 
 
 where 
-cc.`rent_date` NOT BETWEEN '2015-04-04' AND '2015-04-10' 
+(
+		cc.`rent_date` NOT BETWEEN '2015-04-04' AND '2015-04-10'  
+	AND  
+ 		cc.`return_date` NOT BETWEEN '2015-04-04' AND '2015-04-10'
+) 
+	AND NOT 
+(
+	cc.`rent_date`<'2015-04-10' 
 	AND 
-cc.`rent_date`<'2015-04-10' 
-AND   
-cc.`return_date` NOT BETWEEN '2015-04-04' AND '2015-04-10' 
-	AND
-	`return_date`<'2015-04-04'
+	cc.`return_date`>'2015-04-04'
+)
+	
 	
